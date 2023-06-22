@@ -1,0 +1,149 @@
+$pr-font: 'system-ui';
+
+$shadow: 0 0 15px #ccc;
+
+$light: #fff;
+$light-gray: #f1f1f1;
+$dark: #333;
+$pr-color: #1c671c;
+$sc-color: #000;
+
+@mixin media($w) {
+    @media (max-width: $w) {
+        @content;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $pr-font;
+    color: $dark;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    box-shadow: $shadow;
+    @include media(1100px) {
+        padding: 20px 50px;
+    };
+
+    .logo{
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: $pr-color;
+    }
+
+    .nav{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .menu{
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            @include media(760px){
+                display: none;
+            }
+
+            a{
+                text-decoration: none;
+                color: #333;
+                font-size: 14px;
+                font-weight: 700;
+                transition: 0.3s;
+                &:hover{
+                    color: $pr-color;
+                }
+            }
+        }
+
+        .actions{
+            display: flex;
+            gap: 10px;
+
+            button{
+                background: $pr-color;
+                color: $light;
+                padding: 10px 25px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover{
+                    background: $sc-color;
+                }
+            }
+        }
+    }
+}
+
+.hero{
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media(1100px) {
+        padding: 50px;
+    };
+    @include media(760px){
+        flex-direction: column;
+    }
+
+    .text-content{
+        width: 50%;
+        @include media(760px){
+            width: 100%;
+        }
+
+        h1{
+            font-size: 40px;
+            @include media(850px){
+                font-size: 30px;
+            }
+        }
+
+        p{
+            font-size: 20px;
+            max-width: 70%;
+            margin: 15px 0 25px;
+            @include media(850px){
+                font-size: 16px;
+            }
+        }
+
+        .btn{
+            background: $pr-color;
+            color: $light;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+    }
+
+    .image{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include media(760px){
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        img{
+            width: 100%;
+            max-width: 350px;
+        }
+    }
+}
